@@ -1,0 +1,50 @@
+button.btn-link {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+ul.list-group {
+  width: 50%;
+  margin-left: 2em;
+}
+
+.card-body h4 {
+  margin-left: 0.8em;
+}
+
+li.list-group-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+a.btn-info {
+  margin-left: 2em;
+}
+
+.btn-primary {
+  margin: 1em;
+}
+
+div.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 35em;
+}
+
+div.card-header span,
+.list-group-item span {
+  display: flex;
+  align-items: center;
+}
+
+div.card-header span input[type='submit'],
+.list-group-item input[type='submit'] {
+  margin: 0 0.2em;
+  padding: 0.2em;
+}
+
+div.form-group {
+  display: flex;
+  align-items: center;
+}
