@@ -16,7 +16,7 @@
 
 We draw this diagram to explain how requests and responses work.
 
-- [Web App Overview](.web_app_overview.png)
+- [Web App Overview](./web_app_overview.png)
 
 ## Resources
 
