@@ -1,0 +1,64 @@
+<%- include('./partials/_head') %>
+
+<div class="container">
+  <h1>Movie Quotes</h1>
+
+  <div class="accordion" id="quote-list">
+
+  <% for (let quoteObj of quotesArr) { %> 
+
+    <div class="card">
+      <div class="card-header" id="headingTwo">
+        <h5 class="mb-0">
+          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#<%= quoteObj.id %>"
+            aria-expanded="false" aria-controls="collapseTwo">
+            <%= quoteObj.quote %> 
+          </button>
+        </h5>
+
+        <span>
+          <form method="POST" actions="/quotes/<%= quoteObj.id %>">
+            <input type="submit" class="btn btn-secondary btn-sm"
+              value="Edit">
+          </form>
+          <form method="POST" actions="/quotes/<%= quoteObj.id %>/delete">
+          <input type="submit" class="btn btn-secondary btn-sm"
+              value="Delete">
+          </form>
+        </span>
+
+      </div>
+      <div id="<%= quoteObj.id %>" class="collapse" aria-labelledby="headingTwo" data-parent="#quote-list">
+        <div class="card-body">
+          <h4>Comments</h4>
+
+          <ul class="list-group">
+            <li class="list-group-item">
+              Comment content
+              <span>
+                <form>
+                <input type="submit" class="btn btn-secondary btn-sm"
+                    value="Edit">
+                </form>
+                <form >
+                <input type="submit" class="btn btn-secondary btn-sm"
+                    value="Delete">
+                </form>
+              </span>
+            </li>
+          </ul>
+
+          <a href="#" class="btn btn-info">Add Comment</a>
+        </div>
+      </div>
+    </div>
+      <% } %> 
+  </div>
+
+
+
+  <a href="/quotes/new" class="btn btn-primary">Add Quote</a>
+</div>
+</body>
+
+</html>

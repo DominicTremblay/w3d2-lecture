@@ -1,0 +1,25 @@
+<%- include('./partials/_head') %>
+
+<div class="container">
+
+    <h1>Add a New Quote</h1>
+
+    <form method="POST" action="/quotes">
+      <div style="width: 20em;">
+        <div class="form-group">
+        <input
+          style="width: 100%"
+          type="text"
+          name="quoteContent"
+          id="quote"
+          placeholder="Please enter your quote">
+        
+        </div>
+
+        <input type="submit" class="btn btn-primary" value="Add" />
+      </div>
+    </form>
+
+</div>
+  </body>
+</html>

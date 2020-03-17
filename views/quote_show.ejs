@@ -1,0 +1,23 @@
+<%- include('./partials/_head') %>
+
+<div class="container">
+    <h1>Edit Quote</h1>
+
+    <form method="POST" action="/quotes/<%= quoteObj.id %>">
+    <div class="form-group">
+      <div style="width: 20em;">
+        <input
+          style="width: 100%"
+          type="text"
+          name="quoteContent"
+          id="quote"
+          value="<%= quoteObj.quote %>">
+      </div>
+      
+
+        <input type="submit" class="btn btn-primary" value="Update" />
+      </div>
+    </form>
+    </div>
+  </body>
+</html>
