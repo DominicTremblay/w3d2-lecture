@@ -52,6 +52,21 @@ const quoteComments = {
   },
 };
 
+const users = {
+  eb849b1f: {
+    id: 'eb849b1f',
+    name: 'Kent Cook',
+    email: 'really.kent.cook@kitchen.com',
+    password: 'cookinglessons',
+  },
+  '1dc937ec': {
+    id: '1dc937ec',
+    name: 'Phil A. Mignon',
+    email: 'good.philamignon@steak.com',
+    password: 'meatlover',
+  },
+};
+
 const createNewQuote = content => {
   const quoteId = uuid().substr(0, 8);
 
