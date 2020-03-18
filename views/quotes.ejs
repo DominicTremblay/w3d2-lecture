@@ -16,11 +16,11 @@
         </h5>
 
         <span>
-          <form method="POST" actions="/quotes/<%= quoteObj.id %>">
+          <form method="GET" action="/quotes/<%= quoteObj.id %>">
             <input type="submit" class="btn btn-secondary btn-sm"
               value="Edit">
           </form>
-          <form method="POST" actions="/quotes/<%= quoteObj.id %>/delete">
+          <form method="POST" action="/quotes/<%= quoteObj.id %>/delete">
           <input type="submit" class="btn btn-secondary btn-sm"
               value="Delete">
           </form>
