@@ -1,3 +1,27 @@
+header {
+  width: 100%;
+  height: 5rem;
+  background-color: darkturquoise;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 3rem;
+  font-size: 3rem;
+  font-weight: bold;
+  color: white;
+}
+
+header ul {
+  font-size: 2rem;
+  list-style-type: none;
+  display: flex;
+  margin-right: 5rem;
+}
+
+header ul > li {
+  margin: 1rem;
+}
+
 button.btn-link {
   font-size: 1.2em;
   font-weight: bold;
