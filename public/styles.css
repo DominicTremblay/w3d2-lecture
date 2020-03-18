@@ -22,6 +22,10 @@ header ul > li {
   margin: 1rem;
 }
 
+header ul [type='submit'] {
+  background-color: darkgray;
+}
+
 button.btn-link {
   font-size: 1.2em;
   font-weight: bold;
@@ -71,4 +75,8 @@ div.card-header span input[type='submit'],
 div.form-group {
   display: flex;
   align-items: center;
+}
+
+form label {
+  width: 12rem;
 }
