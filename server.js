@@ -50,6 +50,11 @@ const quoteComments = {
     comment: 'So awesome comment!',
     quoteId: 'd9424e04',
   },
+  g89if43e: {
+    id: 'g89if43e',
+    comment: 'So awesome comment!',
+    quoteId: '4ad11feb',
+  },
 };
 
 app.listen(PORT, () => console.log(`Server is running at port ${PORT}`));
