@@ -53,6 +53,11 @@ const quoteComments = {
     comment: 'So awesome comment!',
     quoteId: 'd9424e04',
   },
+  g89if43e: {
+    id: 'g89if43e',
+    comment: 'So awesome comment!',
+    quoteId: '4ad11feb',
+  },
 };
 
 const usersDb = {
@@ -70,7 +75,7 @@ const usersDb = {
   },
 };
 
-const createNewQuote = content => {
+const createNewQuote = (content) => {
   const quoteId = uuid().substr(0, 8);
 
   // {
@@ -131,7 +136,7 @@ const addNewUser = (name, email, password) => {
   return userId;
 };
 
-const findUserByEmail = email => {
+const findUserByEmail = (email) => {
   // const user = Object.values(usersDb).find(userObj => userObj.email === email)
   //  return user;
 
