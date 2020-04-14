@@ -57,4 +57,154 @@ const quoteComments = {
   },
 };
 
+// HELPER FUNCTIONS
+
+const addNewQuote = content => {
+
+  // generate an id for the new quote
+  const id = Math.random().toString(36).substr(2,8);
+
+  // {
+  //   id: 'd9424e04',
+  //   quote: 'Why so serious?',
+  // }
+
+  // create a new quote object
+  const newQuote = {
+    id: id,
+    quote: content
+  };
+
+  // Add it to movieQuotesDb
+  movieQuotesDb[id] = newQuote;
+
+  // return the id of the quote
+  return id;
+
+}
+
+const updateQuote = (id, content) => {
+  movieQuotesDb[id].quote = content;
+}
+
+
+// END POINTS OR ROUTES
+
+app.get('/', (req, res) => {
+
+  res.redirect('/quotes');
+})
+
+
+// List of movieQuotes - READ
+
+app.get('/quotes', (req, res) => {
+
+  const movieQuotes = Object.values(movieQuotesDb);
+
+  const templatevars = {movieQuotesArr: movieQuotes};  
+
+  res.render('quote_list', {movieQuotesArr: movieQuotes});
+
+});
+
+// Display the form to add a new quote - READ
+app.get('/quotes/new', (req, res) => {
+
+  res.render('quote_new');
+
+});
+
+// Create a new quote (add it to the db) - CREATE
+
+app.post('/quotes', (req, res) => {
+
+  // Extract the information contained in the form
+  // req.body
+
+  console.log(req.body);
+  // {quote_content: 'Over My Dead Body'}
+
+  const content = req.body['quote_content'];
+
+  console.log("CONTENT", content);
+
+  // Create a new quote in the db
+  const quoteId = addNewQuote(content);
+
+  // redirect to /quotes
+  res.redirect('/');
+
+  // res.send("Quote added");
+
+
+});
+
+// Display the update form - READ
+app.get('/quotes/:id/update', (req, res) => {
+
+  // extract the quote id from the url
+  // req.params
+
+  console.log("PARAMS", req.params);
+
+  const quoteId = req.params.id; 
+  // we to get that quote from the db
+
+  const quoteObj = movieQuotesDb[quoteId];
+
+  const templatevars = {quoteObj: quoteObj}
+
+  // display the update form
+
+  res.render('quote_show', templatevars);
+
+
+});
+
+
+// PUT (POST) to update the quote in the db
+
+app.post('/quotes/:id', (req, res) => {
+  // Extract the quote id from the url
+  // req.params
+
+  const quoteId = req.params.id;
+
+  // Extract the quote content from the form
+  // req.body
+
+  const content = req.body.quote_content;  
+
+  // Update the quote in the db
+
+  updateQuote(quoteId, content);
+
+  // redirect to /quotes
+
+  res.redirect('/quotes');
+
+});
+
+// delete a quote from the DB - DELETE (POST)
+app.post('/quotes/:id/delete', (req, res) => {
+
+  console.log("DELETE HERE");
+
+  // extract the id from the url
+  // req.params
+  const quoteId = req.params.id;
+  // delete it from the db
+  delete movieQuotesDb[quoteId];
+
+  // redirect to /quotes
+  res.redirect('/quotes');
+
+});
+
+
+
+
+
+
 app.listen(PORT, () => console.log(`Server is running at port ${PORT}`));

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update</title>
+</head>
+<body>
+
+  <h1>Update a quote</h1>
+
+  <form method='POST' action='/quotes/<%= quoteObj.id %>'>
+
+    <input type='text' name='quote_content' value='<%= quoteObj.quote %>' />
+
+    <input type='submit' value='Update Quote' />
+
+  <form>
+
+
+  
+</body>
+</html>
