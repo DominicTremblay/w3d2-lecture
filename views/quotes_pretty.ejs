@@ -1,0 +1,65 @@
+<%- include('./partials/_head') %>
+
+<div class="container">
+
+  <div class="accordion" id="quote-list">
+
+<!-- Each quote is going to be a card element -->
+
+    <div class="card">
+      <div class="card-header" id="headingTwo">
+        <h5 class="mb-0">
+          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#insert-quote-id-here"
+            aria-expanded="false" aria-controls="collapseTwo">
+
+            Insert quote content here
+
+          </button>
+        </h5>
+
+        <span>
+          <form>
+            <input type="submit" class="btn btn-secondary btn-sm"
+              value="Edit">
+          </form>
+          <form>
+          <input type="submit" class="btn btn-secondary btn-sm"
+              value="Delete">
+          </form>
+        </span>
+
+      </div>
+      <div id="insert-quote-id-here" class="collapse" aria-labelledby="headingTwo" data-parent="#quote-list">
+        <div class="card-body">
+          <h4>Comments</h4>
+
+          <ul class="list-group">
+            <li class="list-group-item">
+              Comment content
+              <span>
+                <form>
+                <input type="submit" class="btn btn-secondary btn-sm"
+                    value="Edit">
+                </form>
+                <form >
+                <input type="submit" class="btn btn-secondary btn-sm"
+                    value="Delete">
+                </form>
+              </span>
+            </li>
+          </ul>
+
+          <a href="#" class="btn btn-info">Add Comment</a>
+        </div>
+      </div>
+    </div>
+<!-- End of the loop -->
+  </div>
+
+
+
+  <a href="" class="btn btn-primary">Add Quote</a>
+</div>
+</body>
+
+</html>
