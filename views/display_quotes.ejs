@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>List of quotes</title>
+</head>
+<body>
+  
+  <h1>Movie Quotes</h1>
+
+  <ul>
+<!-- create a loop to get all the movie quotes -->
+
+<% for (let quoteObj of quotesArr) {  %>
+
+  <li><a href='/quotes/<%= quoteObj.id %>'><%= quoteObj.quote %></a> <form method="post" action="/quotes/<%= quoteObj.id %>/delete"><input type="submit" value="Delete"></form></li>
+
+<% } %> 
+
+  </ul>
+
+
+
+<form method="POST" action="/quotes">
+
+  <input type="text" name="quoteContent" id="quote">
+
+  <input type="submit" value="Add Quote">
+
+</form>
+
+
+</body>
+</html>

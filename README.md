@@ -14,9 +14,7 @@
 
 ## Web App Request/Response Recap
 
-We draw this diagram to explain how requests and responses work.
-
-- [Web App Overview](./web_app_overview.png)
+We included a recap in the [slides](./w3d2.pdf)
 
 ## Resources
 
