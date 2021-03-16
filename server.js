@@ -1,7 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
-const uuid = require('uuid/v4');
 
 const PORT = process.env.PORT || 3000;
 
@@ -12,7 +11,7 @@ const app = express();
 app.use(morgan('short'));
 
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Static assets (images, css files) are being served from the public folder
 app.use(express.static('public'));
@@ -44,12 +43,15 @@ const movieQuotesDb = {
   },
 };
 
-const quoteComments = {
-  '70fcf8bd': {
-    id: '70fcf8bd',
-    comment: 'So awesome comment!',
-    quoteId: 'd9424e04',
-  },
-};
+
+// END POINTS OR ROUTES
+
+app.get('/', (req, res) => {
+  res.send('Welcome to the movie quotes app!')
+})
+
+
+// CRUD Operations on quotes
+
 
 app.listen(PORT, () => console.log(`Server is running at port ${PORT}`));
