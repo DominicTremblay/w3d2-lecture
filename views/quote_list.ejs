@@ -1,0 +1,23 @@
+<%- include('./partials/_head') %>
+
+<div class="container">
+
+<h1>List of movie quotes</h1>
+
+<!-- Need to loop over the entries of quoteList -->
+<!-- Loop through the object -->
+
+<ul>
+
+  
+  <% for (let movieId in quoteList) { %>
+    
+    <li><%= quoteList[movieId].quote %> 
+    <form method="POST" action="/quotes/<%= movieId %>/delete">
+      <input class="btn btn-danger" type="submit" value="Delete">
+    </form></li>
+
+    <% } %> 
+</ul>
+
+</div>
