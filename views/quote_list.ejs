@@ -1,0 +1,24 @@
+<%- include('./partials/_head') %>
+
+  <h1>List of quotes</h1>
+  <ul>
+
+    <% for (let id in movieQuotes ) { %>
+
+      <li>
+        <%= movieQuotes[id].quote %> <a href="/quotes/<%= id %>/update" class="btn-sm btn-primary">Update Quote</a>
+          <form method="POST" action="/quotes/<%= id %>/delete">
+            <input type="submit" class="btn-sm btn-danger"
+              value="delete"></form>
+          </form>
+      </li>
+
+      <% } %>
+
+
+        <a href="/quotes/new" class="btn btn-primary">Add Quote</a>
+
+  </ul>
+  </body>
+
+  </html>
