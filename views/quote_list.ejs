@@ -1,0 +1,22 @@
+<%- include('./partials/_head') %>
+
+
+  <h1>List of Movie Quotes</h1>
+
+  <ul>
+
+
+    <% for (let movieId in quoteList) { %>
+
+      <li>
+        <%= quoteList[movieId]['quote'] %> <a href='/quotes/<%= movieId %>'>Edit</a>
+          <form method="POST" action="/quotes/<%= movieId %>/delete"><input type="submit" value="delete"></form>
+      </li>
+
+      <% } %>
+
+  </ul>
+
+  </body>
+
+  </html>
