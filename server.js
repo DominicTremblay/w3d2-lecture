@@ -43,15 +43,90 @@ const movieQuotesDb = {
   },
 };
 
-
 // END POINTS OR ROUTES
 
 app.get('/', (req, res) => {
-  res.send('Welcome to the movie quotes app!')
-})
-
+  res.send('Welcome to the movie quotes app!');
+});
 
 // CRUD Operations on quotes
 
+// READ => List all the quotes
+// GET /quotes
+
+app.get('/quotes', (req, res) => {
+  // pull the quotes from the object
+  const templateVars = { quotesDb: movieQuotesDb };
+
+  // render the view with the quotes from the db
+
+  res.render('quote_list', templateVars);
+});
+
+// CREATE => create a new quote
+// REST
+// 2 routes:
+// GET /quotes/new => display the form to add a new quote
+// POST /quotes => actually create the new quote
+
+app.get('/quotes/new', (req, res) => {
+  res.render('new_quote');
+});
+
+app.post('/quotes', (req, res) => {
+  // extract the quote from the form
+
+  // req.params? => when the info is part of the url
+  // req.body? => when the info is traveling in the body of a request (form)
+
+  const quoteContent = req.body.quoteContent;
+
+  // create a new quote (generate a new id)
+  const quoteId = Math.random().toString(36).substring(2, 8);
+  // add the new quote to db
+  movieQuotesDb[quoteId] = {
+    id: quoteId,
+    quote: quoteContent,
+  };
+  // redirect to /quotes
+  res.redirect('/quotes'); // trigger a new get request to /quotes
+});
+
+// UPDATE => updating an existing quote
+// 2 routes:
+// GET /quotes/:id (SHOW)
+// PUT /quotes/:id => POST /quotes/:id
+
+app.get('/quotes/:id', (req, res) => {
+  // extract the id => req.params
+  const quoteId = req.params.id;
+
+  // find the correspondind quote from the db
+  const templateVars = {
+    quoteId: movieQuotesDb[quoteId].id,
+    quoteContent: movieQuotesDb[quoteId].quote,
+  }; // value associated with the key => value || undefined
+
+  res.render('quote_show', templateVars);
+});
+
+
+app.post('/quotes/:id', (req, res) => {
+  // extract the id
+  const quoteId = req.params.id; // quoteId
+
+  // extract the updated quote from the form
+  const quoteContent = req.body.quoteContent; // quote string
+
+  // update the db
+  movieQuotesDb[quoteId].quote = quoteContent;
+
+  // redirect to /quotes
+  res.redirect('/quotes')
+
+});
+
+// DELETE => deleting a quote
+// DELETE /quotes/:id => POST /quotes/:id/delete
 
 app.listen(PORT, () => console.log(`Server is running at port ${PORT}`));
