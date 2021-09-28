@@ -1,0 +1,28 @@
+
+<h1>List of Quotes</h1>
+
+<!-- Can I acces movieQuotesDb from here?? no -->
+<!-- the view is totally blind. it does not have access to any value from server.js -->
+<!-- JS expression needs to be wrapped inside <% %> or <%= %> -->
+ 
+<!-- Loop -->
+
+<ul>
+
+<% for (let quoteId in quoteList) { %>
+  
+  
+  <li><%= quoteList[quoteId].quote %> <form method='POST' action='/quotes/<%= quoteId %>/delete'><input type='submit' value='Delete'></form>
+
+
+<% } %> 
+</ul>
+
+  <form method='GET' action='/quotes/new'>
+
+    <input type='submit' value="Add New Quote">
+
+  </form>
+
+</body>
+</html>
