@@ -1,0 +1,30 @@
+<%- include('./partials/_head') %>
+
+  <h1>Jokes List</h1>
+
+  <% for (let jokeId in quotesList) { %> 
+
+    <ul>
+
+      <li>Question > <%= quotesList[jokeId].question %> </li>
+      <li>Answer > <%= quotesList[jokeId].answer %> </li>
+      <li>
+        <form method="GET" action="/jokes/<%= quotesList[jokeId].id %>">
+          <input type="submit" value="Edit">
+        </form>
+
+        <form method="POST" action="/jokes/<%= quotesList[jokeId].id %>/delete">
+          <input type="submit" value="Delete">
+        </form>
+
+      </li>
+
+
+    </ul>
+
+
+  <% } %> 
+
+  </body>
+
+  </html>

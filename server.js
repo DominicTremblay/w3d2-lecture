@@ -1,4 +1,6 @@
 const express = require('express');
+
+// middleware making a log at the terminal
 const morgan = require('morgan');
 
 const PORT = process.env.PORT || 3000;
@@ -54,6 +56,110 @@ app.get('/', (req, res) => {
   res.send('Welcome to the top list of JavaScript jokes!');
 });
 
-// CRUD Operations on quotes
+// CRUD Operations on jokes
+
+// Display all the jokes in our db
+// READ
+app.get('/jokes', (req, res) => {
+
+
+  const templateVars = {quotesList: jsJokesDb};
+
+  // res.send(); => send a response (NodeJS)
+  res.render('jokes_list', templateVars);
+
+});
+
+// Create a new joke
+
+// READ => display the new form
+app.get('/jokes/new', (req, res) => {
+  
+
+  res.render('new_joke');
+
+});
+
+// CREATE => add the joke into our db
+app.post('/jokes', (req, res) => {
+
+  // extract the information that was Submitted with the form
+  const question = req.body.question;
+  const answer = req.body.answer;
+
+  const newKey = Math.random().toString(36).substring(2,8);
+
+  // Add it to the database (jsJokesDb)
+  jsJokesDb[newKey] = {
+    id: newKey,
+    question: question,
+    answer: answer
+  }
+
+  // redirect
+  // ask the browser to perform get /jokes
+  res.redirect('/jokes');
+
+
+})
+
+
+// Update an existing joke
+
+// Delete a joke
+// DELETE operation
+
+// READ => display the update form
+app.get('/jokes/:id', (req, res) => {
+  
+  const jokeId = req.params.id;
+
+  if (!jsJokesDb[jokeId]) {
+
+    res.send("sorry that joke does not exist")
+    return;
+  }
+  
+  const templateVars = {jokeId: jokeId, question: jsJokesDb[jokeId].question, answer: jsJokesDb[jokeId].answer};
+  
+  res.render('joke_show', templateVars);
+});
+
+// UPDATE => update the info in the db
+app.post('/jokes/:id', (req, res) => {
+
+  // extract the id
+  const jokeId = req.params.id;
+
+  // extract the question and anwer
+  const question = req.body.question;
+  const answer = req.body.answer;
+
+  // update the db
+
+  jsJokesDb[jokeId].question = question;
+  jsJokesDb[jokeId].answer = answer;
+
+
+  // redirect
+  res.redirect('/jokes');
+
+});
+
+
+// DELETE a Joke
+
+app.post('/jokes/:id/delete', (req, res) =>{
+
+  // extract the id
+
+  const jokeId = req.params.id;
+
+  // delete this joke from db
+  delete jsJokesDb[jokeId];
+
+  res.redirect('/jokes')
+
+})
 
 app.listen(PORT, () => console.log(`Server is running at port ${PORT}`));

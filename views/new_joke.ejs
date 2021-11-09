@@ -1,25 +1,26 @@
 <%- include('./partials/_head') %>
 
-<div class="container">
+<div class="container-new">
 
     <h1>Add a New Joke</h1>
 
-    <form>
-      <div style="width: 20em;">
+    <form method="POST" action="/jokes">
+      <div style="width: 30em;">
         <div class="form-group">
         <input
           style="width: 100%"
           type="text"
           name="question"
-          id="question"
+          id="quesiton"
           placeholder="Please enter your question">
+          <input
+          style="width: 100%"
+          type="text"
+          name="answer"
+          id="answer"
+          placeholder="Please enter answer">
         </div>
-        <input
-        style="width: 100%"
-        type="text"
-        name="answer"
-        id="answer"
-        placeholder="Please enter answer">
+       
       </div>
 
         <input type="submit" class="btn btn-primary" value="Add" />
