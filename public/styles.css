@@ -1,3 +1,11 @@
+.container {
+  display: flex;
+}
+
+.joke-question {
+  width: 44%;
+}
+
 button.btn-link {
   font-size: 1.2em;
   font-weight: bold;

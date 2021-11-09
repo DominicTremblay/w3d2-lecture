@@ -20,38 +20,40 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
 // In memory database
-const movieQuotesDb = {
+const jsJokesDb = {
   d9424e04: {
     id: 'd9424e04',
-    quote: 'Why so serious?',
+    question: 'Why was the JavaScript developer sad?',
+    answer: "Because they didn't Node how to Express himself",
   },
   '27b03e95': {
     id: '27b03e95',
-    quote: 'YOU SHALL NOT PASS!',
+    question: 'What tool do you use to switch versions of node?',
+    answer: ' dev1> nvm, I figured it out.',
   },
   '5b2cdbcb': {
     id: '5b2cdbcb',
-    quote: "It's called a hustle, sweetheart.",
+    question: 'Why did the hungry dev multiply a string by an integer?',
+    answer: 'He wanted some NaN bread',
   },
   '917d445c': {
     id: '917d445c',
-    quote: 'The greatest teacher, failure is.',
+    question: 'Why is JavaScript is a lot like English?',
+    answer: 'No one knows how to use semicolons properly.',
   },
   '4ad11feb': {
     id: '4ad11feb',
-    quote: 'Speak Friend and Enter',
+    question: 'Why do JavaScripters wear glasses?',
+    answer: "Because they don't C#",
   },
 };
-
 
 // END POINTS OR ROUTES
 
 app.get('/', (req, res) => {
-  res.send('Welcome to the movie quotes app!')
-})
-
+  res.send('Welcome to the top list of JavaScript jokes!');
+});
 
 // CRUD Operations on quotes
-
 
 app.listen(PORT, () => console.log(`Server is running at port ${PORT}`));
