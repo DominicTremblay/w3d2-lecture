@@ -6,13 +6,14 @@
 
 <!-- Each quote is going to be a card element -->
 
+<% for (let jokeId in jokesList) { %>
     <div class="card">
       <div class="card-header" id="headingTwo">
         <h5 class="mb-0">
-          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#insert-joke-id-here"
+          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#<%= jokeId %>"
             aria-expanded="false" aria-controls="collapseTwo">
 
-            Insert question content here
+            <%= jokesList[jokeId]['question'] %>
 
           </button>
         </h5>
@@ -29,13 +30,13 @@
         </span>
 
       </div>
-      <div id="insert-joke-id-here" class="collapse" aria-labelledby="headingTwo" data-parent="#joke-list">
+      <div id="<%= jokeId %>" class="collapse" aria-labelledby="headingTwo" data-parent="#joke-list">
         <div class="card-body">
           <h4>Answer</h4>
 
           <ul class="list-group">
             <li class="list-group-item">
-              Comment content
+              <%= jokesList[jokeId]['answer'] %>
               <span>
                 <form>
                 <input type="submit" class="btn btn-secondary btn-sm"
@@ -52,13 +53,14 @@
         </div>
       </div>
     </div>
+    <% } %>
 <!-- End of the loop -->
   </div>
 
 
 
-  <a href="" class="btn btn-primary">Add Quote</a>
 </div>
+<a href="" class="btn btn-primary">Add Quote</a>
 </body>
 
 </html>

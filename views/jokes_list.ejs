@@ -1,0 +1,35 @@
+<%- include('./partials/_head') %>
+
+  <h1>List of Top JS Jokes</h1>
+
+  <% for (let jokeId in jokesList) { %>
+
+    <ul>
+
+      <li>
+        <%= jokesList[jokeId]['question'] %>
+      </li>
+      <li>
+        <%= jokesList[jokeId]['answer'] %>
+      </li>
+      <li>
+        <a href="/jokes/<%= jokeId %>">Update</a>
+      </li>
+      <li>
+        <form method='POST' action="/jokes/<%= jokeId %>/delete">
+
+          <input type="submit" value="Delete">
+
+        </form>
+      </li>
+
+    </ul>
+
+    <% } %>
+
+    <a href="/jokes/new">Add a new Joke</a>
+
+
+      </body>
+
+      </html>
