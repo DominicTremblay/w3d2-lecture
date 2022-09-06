@@ -1,0 +1,19 @@
+<%- include('./partials/_head') %>
+
+  <h1>List of jokes</h1>
+
+  <ul>
+
+    <% for (let jokeId in jokesDb) { %>
+
+      <li>
+        <%= jokesDb[jokeId].question %> <form method="post" action="/jokes/<%= jokeId %>/delete"><input type="submit" value="Delete" ></form>
+      </li>
+      <% } %>
+
+  </ul>
+
+
+    </body>
+
+    </html>

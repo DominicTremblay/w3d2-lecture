@@ -1,4 +1,5 @@
 const express = require('express');
+const { get } = require('express/lib/response');
 const morgan = require('morgan');
 
 const PORT = process.env.PORT || 3000;
@@ -7,7 +8,7 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 
 // morgan middleware allows to log the request in the terminal
-app.use(morgan('short'));
+app.use(morgan('short')); // <= this is a middleware because of app.use
 
 // parse application/x-www-form-urlencoded => req.body
 // replacing bodyParser
@@ -54,6 +55,109 @@ app.get('/', (req, res) => {
   res.send('Welcome to the top list of JavaScript jokes!');
 });
 
-// CRUD Operations on quotes
+// helper route
+app.get('/jokes.json', (req, res) => {
+  // display the content of the db
+  res.json(jsJokesDb);
+});
+
+// C[R]UD => Read
+// read the list of quotes
+app.get('/jokes', (req, res) => {
+  // access the db to get the data
+  const templateVars = { jokesDb: jsJokesDb };
+
+  // sending back the response
+  res.render('joke_list', templateVars);
+});
+
+// create a new quote => [C]RUD
+
+// get and post
+// get => display the add new joke form
+app.get('/jokes/new', (req, res) => {
+  res.render('new_joke');
+});
+
+// post => actually enter the new joke in the db
+
+app.post('/jokes', (req, res) => {
+  // Get the input values from the form
+  const { question, answer } = req.body;
+  // const question = req.body.question;
+  // const answer = req.body.answer
+
+  // generate a random id
+  const jokeId = Math.random().toString(36).substring(2, 8);
+
+  // add these values to the database
+
+  // {
+  //   id: 'd9424e04',
+  //   question: 'Why was the JavaScript developer sad?',
+  //   answer: "Because they didn't Node how to Express himself",
+  // }
+
+  jsJokesDb[jokeId] = {
+    id: jokeId,
+    question,
+    answer,
+  };
+
+  // response (redirect)
+  res.redirect('/jokes');
+});
+
+// update a joke
+// GET => display the update form
+
+app.get('/jokes/:id', (req, res) => {
+  // extract the id from the request => req.params
+
+  const jokeId = req.params.id;
+  const templateVar = { joke: jsJokesDb[jokeId] };
+
+  console.log({ jokeId });
+  console.log(templateVar);
+
+  res.render('joke_show', templateVar);
+});
+
+// PUT => updating the data in the db
+
+app.post('/jokes/:id', (req, res) => {
+  // extract the id from the path
+
+  const { id } = req.params;
+
+  // extract the content from the form
+  const { question, answer } = req.body;
+
+  console.log('id', id, 'question', question, 'answer', answer);
+
+  // update the database (object)
+  jsJokesDb[id] = {
+    id,
+    question,
+    answer,
+  };
+
+  // jsJokesDb[id].question = question;
+  // jsJokesDb[id].answer = answer;
+
+  // redirect to /jokes
+  res.redirect('/jokes');
+});
+
+
+
+app.post('/jokes/:id/delete', (req, res) => {
+  // extract the id of the joke
+  const { id } = req.params;
+  // delete from the db
+  delete jsJokesDb[id];
+  // redirect to /jokes
+  res.redirect('/jokes');
+});
 
 app.listen(PORT, () => console.log(`Server is running at port ${PORT}`));
