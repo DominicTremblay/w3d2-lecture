@@ -1,29 +1,20 @@
 <%- include('./partials/_head') %>
 
-<div class="container">
+  <div class="container">
     <h1>Edit Joke</h1>
 
-    <form>
-    <div class="form-group">
-      <div style="width: 20em;">
-        <input
-          style="width: 100%"
-          type="text"
-          name="question"
-          id="question"
-          value="">
-          <input
-          style="width: 100%"
-          type="text"
-          name="answer"
-          id="answer"
-          value="">
-      </div>
-      
+    <form method="POST" action="/jokes/<%= id %>">
+      <div class="form-group">
+        <div style="width: 20em;">
+          <input style="width: 100%" type="text" name="question" id="question" value="<%= question %>">
+          <input style="width: 100%" type="text" name="answer" id="answer" value="<%= answer %>">
+        </div>
+
 
         <input type="submit" class="btn btn-primary" value="Update" />
       </div>
     </form>
-    </div>
+  </div>
   </body>
-</html>
+
+  </html>

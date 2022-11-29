@@ -1,0 +1,32 @@
+<%- include('./partials/_head') %>
+
+  <h1>List of jokes</h1>
+
+  <!-- const jsJokesDb = {
+    '27b03e95': {
+      id: '27b03e95',
+      question: 'What tool do you use to switch versions of node?',
+      answer: ' dev1> nvm, I figured it out.',
+    }, -->
+
+
+
+  <!-- loop over my jokesDb (Object) -->
+  <% for (let jokeId in jokesDb) { %>
+
+    <ul>
+      <li>question: <%= jokesDb[jokeId].question %>
+      </li>
+      <li>answer: <%= jokesDb[jokeId].answer %>
+      </li>
+      <li>
+        <form method="POST" action="/jokes/<%= jokeId %>/delete">
+          <input type="submit" value="Delete">
+        </form>
+      </li>
+    </ul>
+    <% } %>
+
+      </body>
+
+      </html>
