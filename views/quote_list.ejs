@@ -1,0 +1,28 @@
+<%- include('./partials/_head') %>
+
+
+  <h1>Quote List</h1>
+
+  <ul>
+
+
+    <!-- genereate the LI, on li per quote -->
+    <!-- Loop -->
+    <% for (let quoteId in movieQuotesDb) { %>
+
+      <li>
+        <%= movieQuotesDb[quoteId].quote %>
+          <form method="GET" action="/quotes/<%= quoteId%>"><input type='submit' value='Update'></form>
+          <form method="POST" action="/quotes/<%= quoteId%>/delete"><input type='submit' value='Delete'></form>
+      </li>
+
+      <% } %>
+
+
+  </ul>
+
+  <form method="GET" action="/quotes/new"><input type='submit' value='Add Quote'></form>
+
+  </body>
+
+  </html>
