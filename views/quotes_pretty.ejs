@@ -2,34 +2,38 @@
 
 <div class="container">
 
+  <h1>Quotes List</h1>
+
   <div class="accordion" id="quote-list">
 
 <!-- Each quote is going to be a card element -->
 
+<% for (let quoteId in quotesListDb) { %>
+
     <div class="card">
       <div class="card-header" id="headingTwo">
         <h5 class="mb-0">
-          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#insert-quote-id-here"
+          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#<%= quotesListDb[quoteId].id %>"
             aria-expanded="false" aria-controls="collapseTwo">
 
-            Insert quote content here
+            <%= quotesListDb[quoteId].quote %>
 
           </button>
         </h5>
 
         <span>
-          <form>
+          <form method="GET" action="/quotes/<%= quoteId%>">
             <input type="submit" class="btn btn-secondary btn-sm"
               value="Edit">
           </form>
-          <form>
+          <form method="POST" action="/quotes/<%= quoteId%>/delete">
           <input type="submit" class="btn btn-secondary btn-sm"
               value="Delete">
           </form>
         </span>
 
       </div>
-      <div id="insert-quote-id-here" class="collapse" aria-labelledby="headingTwo" data-parent="#quote-list">
+      <div id="<%= quotesListDb[quoteId].id %>" class="collapse" aria-labelledby="headingTwo" data-parent="#quote-list">
         <div class="card-body">
           <h4>Comments</h4>
 
@@ -41,7 +45,8 @@
                 <input type="submit" class="btn btn-secondary btn-sm"
                     value="Edit">
                 </form>
-                <form >
+                <form>
+               
                 <input type="submit" class="btn btn-secondary btn-sm"
                     value="Delete">
                 </form>
@@ -54,11 +59,12 @@
       </div>
     </div>
 <!-- End of the loop -->
+<% } %>
   </div>
 
 
 
-  <a href="" class="btn btn-primary">Add Quote</a>
+  <a href="/quotes/new" class="btn btn-primary">Add Quote</a>
 </div>
 </body>
 

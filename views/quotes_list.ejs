@@ -1,0 +1,18 @@
+<%- include('./partials/_head') %>
+
+  <h1>List of Quotes</h1>
+
+
+<ul>
+
+<%  for (let movieId in quotesListDb) { %>
+
+
+ <li><%= quotesListDb[movieId].quote %></li>
+  
+<% } %>
+
+</ul>
+
+</body>
+</html>
