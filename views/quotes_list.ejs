@@ -1,0 +1,48 @@
+<%- include('./partials/_head') %>
+
+  <!-- {title: "List of Movie Quotes"} -->
+  <!-- if I used title => string -->
+
+  <!-- {
+  const movieQuotesList = d9424e04: {
+    id: 'd9424e04',
+    quote: 'Why so serious?',
+  },
+  '27b03e95': {
+    id: '27b03e95',
+    quote: 'YOU SHALL NOT PASS!',
+  },
+  '5b2cdbcb': {
+    id: '5b2cdbcb',
+    quote: "It's called a hustle, sweetheart.",
+  },
+  '917d445c': {
+    id: '917d445c',
+    quote: 'The greatest teacher, failure is.',
+  },
+  '4ad11feb': {
+    id: '4ad11feb',
+    quote: 'Speak Friend and Enter',
+  },
+}; -->
+
+  <h1>
+    <%= title %>
+  </h1>
+
+  <ul>
+
+    <% for (let quoteId in movieQuotesList) { %>
+      <li>
+        <%= movieQuotesList[quoteId].quote %>
+        <form method="GET" action="/quotes/<%= quoteId %>"><button type='submit'>Update</button></form>
+          <form method="POST" action="/quotes/<%= quoteId %>/delete"><button type='submit'>Delete</button></form>
+      </li>
+      <% } %>
+
+
+  </ul>
+
+  </body>
+
+  </html>
