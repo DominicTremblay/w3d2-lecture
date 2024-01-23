@@ -1,0 +1,25 @@
+<%- include('./partials/_head') %>
+
+
+
+  <h1>
+    <%= title %>
+  </h1>
+
+  <!-- loop through the object and output the quote -->
+
+
+  <ul>
+    <% for (let quoteId in quotesList) { %>
+
+      <li>
+        <%= quotesList[quoteId].quote %>
+          <form method="GET" action="/quotes/<%= quoteId %>"><button type="submit">Update</button></form>
+          <form method="POST" action="/quotes/<%= quoteId %>/delete"><button type="submit">Delete</button></form>
+      </li>
+
+      <% } %>
+  </ul>
+  </body>
+
+  </html>
