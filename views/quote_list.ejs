@@ -1,0 +1,31 @@
+<%- include('./partials/_head') %>
+
+  <h1>
+    <%= title %>
+  </h1>
+
+
+
+  <ul>
+
+    <% for (let quoteId in moviesDb) { %>
+
+      <li>
+        <%= moviesDb[quoteId].quote %>
+        <form method="GET" action="/quotes/<%= quoteId %>"><button type="submit">Edit</button></form>
+          <form method="POST" action="/quotes/<%= quoteId %>/delete"><button type="submit">Delete</button></form>
+      </li>
+
+
+      <% } %>
+
+
+  </ul>
+
+  <form method="get" action="/quotes/new">
+    <button type="submit">Add</button>
+  </form>
+
+  </body>
+
+  </html>

@@ -1,23 +1,20 @@
 <%- include('./partials/_head') %>
 
-<div class="container">
+  <div class="container">
     <h1>Edit Quote</h1>
 
-    <form>
-    <div class="form-group">
-      <div style="width: 20em;">
-        <input
-          style="width: 100%"
-          type="text"
-          name="quoteContent"
-          id="quote"
-          value="">
-      </div>
-      
+
+    <form method="POST" action="/quotes/<%=  quoteFound.id%>">
+      <div class="form-group">
+        <div style="width: 20em;">
+          <input style="width: 100%" type="text" name="quoteContent" id="quote" value="<%= quoteFound.quote %>">
+        </div>
+
 
         <input type="submit" class="btn btn-primary" value="Update" />
       </div>
     </form>
-    </div>
+  </div>
   </body>
-</html>
+
+  </html>
